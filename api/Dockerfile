@@ -15,7 +15,7 @@ ARG RAILS_ENV
 COPY Gemfile* ./
 
 RUN bundle install
-RUN rails webpacker:install
+RUN yarn install
 
 COPY . .
 
