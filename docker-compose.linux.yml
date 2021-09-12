@@ -1,8 +1,5 @@
 version: "3"
 services:
-  selenium:
-    image: selenium/standalone-chrome
-
   webserver:
     image: nginx:latest
     volumes:
@@ -10,7 +7,6 @@ services:
     ports:
       - 81:80
     tty: true
-
   database:
     image: postgres:latest
     volumes:
@@ -25,7 +21,6 @@ services:
       default:
         aliases:
           - postgres
-
   api:
     deploy:
       restart_policy:
@@ -38,20 +33,15 @@ services:
       args:
         RAILS_ENV: ${RAILS_ENV}
         RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-    environment:
-      - SELENIUM_REMOTE_HOST=selenium
     volumes:
       - ./api:/api
     ports:
       - "3000:3000"
-      - "43447:43447"
     depends_on:
       - database
       - webserver
-      - selenium
     tty: true
     stdin_open: true
-
 volumes:
   bundle_cache:
   ensof_postgres:
