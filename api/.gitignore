@@ -10,7 +10,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+/coverage/*
 !/log/.keep
+!/coverage/.gitkeep
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.

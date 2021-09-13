@@ -10,7 +10,7 @@ services:
   database:
     image: postgres:latest
     volumes:
-      - ensof_postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
     healthcheck:
@@ -44,4 +44,4 @@ services:
     stdin_open: true
 volumes:
   bundle_cache:
-  ensof_postgres:
+  postgres:
