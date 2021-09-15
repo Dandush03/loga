@@ -20,10 +20,10 @@ run() {
   docker-compose run --rm $1 "${@:2}"
 }
 
-# (
-#   run corporate yarn &
-#   run client yarn 
-# ) &
+(
+  run corporate yarn &
+#  run client yarn 
+) &
 
 (
   run api rails db:create

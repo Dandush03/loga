@@ -42,6 +42,23 @@ services:
       - webserver
     tty: true
     stdin_open: true
+  corporate:
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+    build:
+      context: ./corporate
+      dockerfile: ./Dockerfile
+      args:
+        RAILS_ENV: ${RAILS_ENV}
+    volumes:
+      - ./corporate:/usr/src/app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - api
 volumes:
   bundle_cache:
   postgres:
